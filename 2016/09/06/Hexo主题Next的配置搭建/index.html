@@ -94,7 +94,7 @@ Next有一个很完整的文档,大部分看这个文档就可以了，说几个
 <meta property="og:description" content="Next是一款优雅简洁的hexo主题，我当时本来想用yillia的，结果遇到了好些问题，折腾了好久也没解决，后来就换了这个Next主题，比较简洁，而且文档比较全面，适合我这种小白。
 首先安装好Hexo，这个网上教程很多，就不细说了，主要说怎么配置Next。
 Next有一个很完整的文档,大部分看这个文档就可以了，说几个文档中可能遇到的困惑。">
-<meta property="og:updated_time" content="2016-09-05T14:25:21.000Z">
+<meta property="og:updated_time" content="2016-09-05T14:28:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo主题Next的配置搭建">
 <meta name="twitter:description" content="Next是一款优雅简洁的hexo主题，我当时本来想用yillia的，结果遇到了好些问题，折腾了好久也没解决，后来就换了这个Next主题，比较简洁，而且文档比较全面，适合我这种小白。
@@ -326,10 +326,8 @@ Next有一个很完整的文档,大部分看这个文档就可以了，说几个
 <p>Next有一个很完整的<a href="http://theme-next.iissnan.com" target="_blank" rel="external">文档</a>,大部分看这个文档就可以了，说几个文档中可能遇到的困惑。</p>
 <a id="more"></a>
 <p>1&gt;当我们在menu目录下取消tags,about,categories等注释的时候，我们在博客中点击这几个相关链接的时候，会跳转到404页面，原因是这几个页面刚开始并没有被创建，所以我们得自己创建。</p>
-<p>创建方法(拿tags做例子)：<br>    <code>hexo new page &quot;tags&quot;</code></p>
-<p>这样子在hexo主目录下的source下就会多出个tags的文件夹，打开里面会有一个index.md，然后文本编辑打开这个md文件，在其头部添加一对key-value值：</p>
-<p><code>type: tags</code></p>
-<p>改完后，用<code>hexo clean</code><br><code>hexo generate</code><br><code>hexo deploy</code><br>将其上传，刷新页面后点击标签即可看到相应的效果。</p>
+<p>创建方法(拿tags做例子)：    <code>hexo new page &quot;tags&quot;</code></p>
+<p>这样子在hexo主目录下的source下就会多出个tags的文件夹，打开里面会有一个index.md，然后文本编辑打开这个md文件，在其头部添加一对key-value值：<code>type: tags</code><br>改完后，用<code>hexo clean</code> <code>hexo generate</code> <code>hexo deploy</code><br>将其上传，刷新页面后点击标签即可看到相应的效果。</p>
 <p>其他的about和categories也是一样的方法，这样我们就可以将菜单栏对应的页面创建并应用了。</p>
 
       
