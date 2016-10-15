@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="sql注入, webshell," />
 
 
 
@@ -84,15 +84,28 @@
 
 
 
-<meta name="description" content="leohujx’s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="leohujx">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="#从sql注入到shell上传
+
+序:这篇教程是从pentesterlab看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。
+
+#课程简介这篇课程详细介绍了如何在一个php页面网站上进行sql注入，以及攻击者如何利用sql注入登陆管理员界面。利用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从sql注入到shell上传">
+<meta property="og:url" content="http://yoursite.com/2016/10/15/从sql注入到shell上传/index.html">
 <meta property="og:site_name" content="leohujx">
-<meta property="og:description" content="leohujx’s blog">
+<meta property="og:description" content="#从sql注入到shell上传
+
+序:这篇教程是从pentesterlab看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。
+
+#课程简介这篇课程详细介绍了如何在一个php页面网站上进行sql注入，以及攻击者如何利用sql注入登陆管理员界面。利用">
+<meta property="og:updated_time" content="2016-10-15T05:38:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leohujx">
-<meta name="twitter:description" content="leohujx’s blog">
+<meta name="twitter:title" content="从sql注入到shell上传">
+<meta name="twitter:description" content="#从sql注入到shell上传
+
+序:这篇教程是从pentesterlab看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。
+
+#课程简介这篇课程详细介绍了如何在一个php页面网站上进行sql注入，以及攻击者如何利用sql注入登陆管理员界面。利用">
 
 
 
@@ -113,9 +126,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/15/从sql注入到shell上传/"/>
 
-  <title> leohujx </title>
+  <title> 从sql注入到shell上传 | leohujx </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +149,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,9 +246,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -257,10 +268,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/10/15/从sql注入到shell上传/" itemprop="url">
-                  从sql注入到shell上传
-                </a>
+                从sql注入到shell上传
               
             
           </h1>
@@ -272,7 +280,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-15T13:36:36Z" content="2016-10-15">
+            <time itemprop="dateCreated" datetime="2016-10-15T21:36:36+08:00" content="2016-10-15">
               2016-10-15
             </time>
           </span>
@@ -319,9 +327,7 @@
       
 
       
-        
-          
-            <p>#从sql注入到shell上传</p>
+        <p>#从sql注入到shell上传</p>
 <blockquote>
 <p>序:<br>这篇教程是从<a href="https://pentesterlab.com/exercises/from_sqli_to_shell/course" target="_blank" rel="external">pentesterlab</a>看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。</p>
 </blockquote>
@@ -472,368 +478,59 @@
 <p>这个脚本缺点在于每次运行脚本都是在一个全新的环境中，并不会有上一个命令执行以后的影响，所以每次执行命令都得重新开始。</p>
 <p>#总结<br>这个例子比较完整的展示了利用sql注入和webshell上传来达到控制服务器的目的，我们可以看出错误提示给了我们很好的提示，让我们能够知道很多的信息，所以一个解决方法就是在PHP设置中把<code>display_errors</code>这个选项给禁止掉，然后重启服务器，这样出现错误的话就不会显示在页面上。</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/06/Hexo主题Next的配置搭建/" itemprop="url">
-                  Hexo主题Next的配置搭建
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T18:13:37Z" content="2016-09-05">
-              2016-09-05
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/sql注入-webshell/" rel="tag">#sql注入, webshell</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>Next是一款优雅简洁的hexo主题，我当时本来想用yillia的，结果遇到了好些问题，折腾了好久也没解决，后来就换了这个Next主题，比较简洁，而且文档比较全面，适合我这种小白。</p>
-<p>首先安装好Hexo，这个网上教程很多，就不细说了，主要说怎么配置Next。</p>
-<p>Next有一个很完整的<a href="http://theme-next.iissnan.com">文档</a>,大部分看这个文档就可以了，说几个文档中可能遇到的困惑。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/06/Hexo主题Next的配置搭建/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/06/Hexo主题Next的配置搭建/" rel="next" title="Hexo主题Next的配置搭建">
+                <i class="fa fa-chevron-left"></i> Hexo主题Next的配置搭建
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/05/test/" itemprop="url">
-                  test
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-04T21:57:15Z" content="2016-09-04">
-              2016-09-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <p>测试下tags和categories的功能<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/05/test/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/01/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-01T14:39:11Z" content="2016-09-01">
-              2016-09-01
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/01/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -841,6 +538,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -860,8 +561,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/cmxx.png"
@@ -911,6 +621,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1014,6 +735,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
