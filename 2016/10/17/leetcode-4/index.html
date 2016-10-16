@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Binary Search," />
 
 
 
@@ -84,15 +84,31 @@
 
 
 
-<meta name="description" content="leohujx’s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="leohujx">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Median of Two Sorted Arrays题目戳这
+题意:
+给你两个已经从小到大排好序的数组，如果将这两个数组有序的合并，求中位数，并且要求算法复杂度为log(m+n)
+
+解法:这道题目如果不要求复杂度的话就很简单，直接两个数组合并排序然后求中位数，但是那样的算法那复杂度为(m+n)log(m+n)。
+这题其实可以套用求第k大元素的方法，对于两个有序数组A，B 我们假设C=A+B，如果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode_4">
+<meta property="og:url" content="http://yoursite.com/2016/10/17/leetcode-4/index.html">
 <meta property="og:site_name" content="leohujx">
-<meta property="og:description" content="leohujx’s blog">
+<meta property="og:description" content="Median of Two Sorted Arrays题目戳这
+题意:
+给你两个已经从小到大排好序的数组，如果将这两个数组有序的合并，求中位数，并且要求算法复杂度为log(m+n)
+
+解法:这道题目如果不要求复杂度的话就很简单，直接两个数组合并排序然后求中位数，但是那样的算法那复杂度为(m+n)log(m+n)。
+这题其实可以套用求第k大元素的方法，对于两个有序数组A，B 我们假设C=A+B，如果">
+<meta property="og:updated_time" content="2016-10-16T09:31:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leohujx">
-<meta name="twitter:description" content="leohujx’s blog">
+<meta name="twitter:title" content="leetcode_4">
+<meta name="twitter:description" content="Median of Two Sorted Arrays题目戳这
+题意:
+给你两个已经从小到大排好序的数组，如果将这两个数组有序的合并，求中位数，并且要求算法复杂度为log(m+n)
+
+解法:这道题目如果不要求复杂度的话就很简单，直接两个数组合并排序然后求中位数，但是那样的算法那复杂度为(m+n)log(m+n)。
+这题其实可以套用求第k大元素的方法，对于两个有序数组A，B 我们假设C=A+B，如果">
 
 
 
@@ -113,9 +129,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/17/leetcode-4/"/>
 
-  <title> leohujx </title>
+  <title> leetcode_4 | leohujx </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +152,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -235,9 +249,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -257,10 +271,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/10/17/leetcode-4/" itemprop="url">
-                  leetcode_4
-                </a>
+                leetcode_4
               
             
           </h1>
@@ -272,7 +283,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T17:04:59Z" content="2016-10-16">
+            <time itemprop="dateCreated" datetime="2016-10-17T01:04:59+08:00" content="2016-10-16">
               2016-10-16
             </time>
           </span>
@@ -319,9 +330,7 @@
       
 
       
-        
-          
-            <h1 id="Median-of-Two-Sorted-Arrays"><a href="#Median-of-Two-Sorted-Arrays" class="headerlink" title="Median of Two Sorted Arrays"></a>Median of Two Sorted Arrays</h1><p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="external">题目戳这</a></p>
+        <h1 id="Median-of-Two-Sorted-Arrays"><a href="#Median-of-Two-Sorted-Arrays" class="headerlink" title="Median of Two Sorted Arrays"></a>Median of Two Sorted Arrays</h1><p><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="external">题目戳这</a></p>
 <h2 id="题意"><a href="#题意" class="headerlink" title="题意:"></a>题意:</h2><blockquote>
 <p>给你两个已经从小到大排好序的数组，如果将这两个数组有序的合并，求中位数，并且要求算法复杂度为<code>log(m+n)</code></p>
 </blockquote>
@@ -338,600 +347,59 @@
 </ol>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码:"></a>代码:</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findkthElement</span><span class="params">(self, arr1, m, arr2, n, k)</span>:</span></div><div class="line">        <span class="keyword">if</span> m &gt; n: <span class="comment"># 保证arr1是规模比较小的数组</span></div><div class="line">            <span class="keyword">return</span> self.findkthElement(arr2, n, arr1, m, k)</div><div class="line">        <span class="keyword">if</span> m == <span class="number">0</span>: <span class="comment"># 递归边界1</span></div><div class="line">            <span class="keyword">return</span> arr2[k<span class="number">-1</span>]</div><div class="line">        <span class="keyword">if</span> k == <span class="number">1</span>: <span class="comment"># 递归边界2</span></div><div class="line">            <span class="keyword">return</span> arr1[<span class="number">0</span>] <span class="keyword">if</span> arr1[<span class="number">0</span>]&lt;arr2[<span class="number">0</span>] <span class="keyword">else</span> arr2[<span class="number">0</span>]</div><div class="line">        </div><div class="line">        pa = k//<span class="number">2</span> <span class="keyword">if</span> k//<span class="number">2</span> &lt; m <span class="keyword">else</span> m <span class="comment"># 保证k/2是小于m的</span></div><div class="line">        pb = k - pa  <span class="comment"># k/2或者k-m</span></div><div class="line">        <span class="keyword">if</span> arr1[pa<span class="number">-1</span>] &lt; arr2[pb<span class="number">-1</span>]: <span class="comment"># arr1[k/2-1] &lt; arr2[k/2-1]</span></div><div class="line">            <span class="keyword">return</span> self.findkthElement(arr1[pa:], m-pa, arr2, n, k-pa)</div><div class="line">        <span class="keyword">elif</span> arr1[pa<span class="number">-1</span>] &gt; arr2[pb<span class="number">-1</span>]:</div><div class="line">            <span class="keyword">return</span> self.findkthElement(arr1, m, arr2[pb:], n-pb, k-pb)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">return</span> arr1[pa<span class="number">-1</span>] <span class="comment"># arr1[k/2-1] = arr2[k/2-1]</span></div><div class="line">        <span class="keyword">pass</span></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedianSortedArrays</span><span class="params">(self, nums1, nums2)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums1: List[int]</div><div class="line">        :type nums2: List[int]</div><div class="line">        :rtype: float</div><div class="line">        """</div><div class="line">        total = len(nums1)+len(nums2)</div><div class="line">        m = len(nums1)</div><div class="line">        n = len(nums2)</div><div class="line">        <span class="keyword">if</span> total % <span class="number">2</span> == <span class="number">1</span>: <span class="comment"># 奇数的情况</span></div><div class="line">            <span class="keyword">return</span> self.findkthElement(nums1, m, nums2, n, total//<span class="number">2</span>+<span class="number">1</span>)</div><div class="line">        <span class="keyword">else</span>:    <span class="comment"># 偶数的情况</span></div><div class="line">            <span class="keyword">return</span> (self.findkthElement(nums1, m, nums2, n, total//<span class="number">2</span>) + self.findkthElement(nums1, m,</div><div class="line">            nums2, n, total//<span class="number">2</span>+<span class="number">1</span>))*<span class="number">1.0</span>/<span class="number">2</span></div></pre></td></tr></table></figure>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/17/leetcode-3/" itemprop="url">
-                  leetcode_3
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T16:52:17Z" content="2016-10-16">
-              2016-10-16
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/leetcode/" itemprop="url" rel="index">
-                    <span itemprop="name">leetcode</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Binary-Search/" rel="tag">#Binary Search</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="Longest-Substring-Without-Repeating-Characters-最长不重复子串"><a href="#Longest-Substring-Without-Repeating-Characters-最长不重复子串" class="headerlink" title="Longest Substring Without Repeating Characters(最长不重复子串)"></a>Longest Substring Without Repeating Characters(最长不重复子串)</h1><p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/">题目戳这</a></p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/17/leetcode-3/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/17/leetcode-3/" rel="next" title="leetcode_3">
+                <i class="fa fa-chevron-left"></i> leetcode_3
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/10/15/从sql注入到shell上传/" itemprop="url">
-                  从sql注入到shell上传
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-15T13:36:36Z" content="2016-10-15">
-              2016-10-15
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/web渗透/" itemprop="url" rel="index">
-                    <span itemprop="name">web渗透</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="从sql注入到shell上传"><a href="#从sql注入到shell上传" class="headerlink" title="从sql注入到shell上传"></a>从sql注入到shell上传</h1><blockquote>
-<p>这篇教程是从<a href="https://pentesterlab.com/exercises/from_sqli_to_shell/course">pentesterlab</a>看到的，是web渗透入门一个很好的教程，网站上有该课程的靶机实体下载，非会员的话下一个iso格式的靶机，然后安装即可。看完练完以后受益匪浅，所以想翻译成中文以便日后复习之用，有些过于基础的部分就不翻译了。</p>
-</blockquote>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/15/从sql注入到shell上传/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/06/Hexo主题Next的配置搭建/" itemprop="url">
-                  Hexo主题Next的配置搭建
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T18:13:37Z" content="2016-09-05">
-              2016-09-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/随笔/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Next是一款优雅简洁的hexo主题，我当时本来想用yillia的，结果遇到了好些问题，折腾了好久也没解决，后来就换了这个Next主题，比较简洁，而且文档比较全面，适合我这种小白。</p>
-<p>首先安装好Hexo，这个网上教程很多，就不细说了，主要说怎么配置Next。</p>
-<p>Next有一个很完整的<a href="http://theme-next.iissnan.com">文档</a>,大部分看这个文档就可以了，说几个文档中可能遇到的困惑。</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/06/Hexo主题Next的配置搭建/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/05/test/" itemprop="url">
-                  test
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-04T21:57:15Z" content="2016-09-04">
-              2016-09-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>测试下tags和categories的功能<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/05/test/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/01/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-01T14:39:11Z" content="2016-09-01">
-              2016-09-01
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a><br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/01/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -939,6 +407,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -958,8 +430,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/cmxx.png"
@@ -1009,6 +490,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Median-of-Two-Sorted-Arrays"><span class="nav-number">1.</span> <span class="nav-text">Median of Two Sorted Arrays</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">1.2.</span> <span class="nav-text">解法:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码:</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -1112,6 +604,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
