@@ -258,6 +258,125 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/17/leetcode-5/" itemprop="url">
+                  leetcode_5
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-16T17:32:42Z" content="2016-10-16">
+              2016-10-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Longest-Palindromic-Substring"><a href="#Longest-Palindromic-Substring" class="headerlink" title="Longest Palindromic Substring"></a>Longest Palindromic Substring</h1><p><a href="https://leetcode.com/problems/longest-palindromic-substring/" target="_blank" rel="external">题目戳这</a></p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><blockquote>
+<p>求最长回文子串</p>
+</blockquote>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>求最长回文子串是很经典的问题啊，有很多种解法，最基本的就是用暴力，时间复杂度是<code>log(n^3)</code>,再者就是用经典的dp解法，时间复杂度为<code>log(n^2)</code>,更进阶的使用manacher算法，时间复杂度为<code>log(n)</code>，就这道题目来说，最长的串为1000,那么用n^2的复杂度就可以。</p>
+<p>我们用table[i][j]来记录字符串从i到j是否为回文串，很显然，<code>table[i][i]=1</code>,然后同时我们也可以初始化<code>table[i][i+1]</code>，只要比较s[i]和s[i+1]是否相等即可。<br>最关键的状态转移方程就是如果s[i]==s[j]并且table[i+1][j-1]，则table[i][j]=table[i+1][j-1]，这是很显然的。</p>
+<p>我刚开始用python时老是超时，后来换用C++可以过。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestPalindrome</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> len = s.size();</div><div class="line">        <span class="keyword">if</span>(len == <span class="number">0</span>)&#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> flag[<span class="number">1010</span>][<span class="number">1010</span>];</div><div class="line">        <span class="built_in">memset</span>(flag, <span class="number">0</span>, <span class="keyword">sizeof</span> flag);</div><div class="line">        <span class="keyword">int</span> mmax = <span class="number">1</span>;</div><div class="line">        <span class="built_in">string</span> res = s.substr(<span class="number">0</span>, <span class="number">1</span>);</div><div class="line">        <span class="keyword">int</span> start = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;i++)&#123;</div><div class="line">            flag[i][i] = <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span>(i+<span class="number">1</span>&lt;len &amp;&amp; s[i] == s[i+<span class="number">1</span>])&#123;</div><div class="line">                start = i;</div><div class="line">                mmax = <span class="number">2</span>;</div><div class="line">                flag[i][i+<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> slen = <span class="number">3</span>;slen &lt; len+<span class="number">1</span>; slen++)&#123; <span class="comment">//枚举回文串长度，注意有可能长度为len</span></div><div class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i+slen<span class="number">-1</span> &lt; len; i++)&#123;</div><div class="line">                <span class="keyword">int</span> j = i + slen - <span class="number">1</span>; <span class="comment">//此时j的值          </span></div><div class="line">                <span class="keyword">if</span>(flag[i+<span class="number">1</span>][j<span class="number">-1</span>] &amp;&amp; s[i] == s[j])&#123;</div><div class="line">                    flag[i][j] = flag[i+<span class="number">1</span>][j<span class="number">-1</span>];</div><div class="line">                    mmax = slen;</div><div class="line">                    start = i;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(mmax&gt;=<span class="number">2</span>)</div><div class="line">            <span class="keyword">return</span> s.substr(start, mmax);</div><div class="line">        <span class="keyword">return</span> res;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/17/leetcode-4/" itemprop="url">
                   leetcode_4
                 </a>
@@ -970,7 +1089,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
