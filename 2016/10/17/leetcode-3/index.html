@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="dp," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="leohujx’s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="leohujx">
-<meta property="og:url" content="http://yoursite.com/categories/随笔/index.html">
+<meta name="description" content="Longest Substring Without Repeating Characters(最长不重复子串)题目戳这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode_3">
+<meta property="og:url" content="http://yoursite.com/2016/10/17/leetcode-3/index.html">
 <meta property="og:site_name" content="leohujx">
-<meta property="og:description" content="leohujx’s blog">
+<meta property="og:description" content="Longest Substring Without Repeating Characters(最长不重复子串)题目戳这">
+<meta property="og:updated_time" content="2016-10-16T08:58:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leohujx">
-<meta name="twitter:description" content="leohujx’s blog">
+<meta name="twitter:title" content="leetcode_3">
+<meta name="twitter:description" content="Longest Substring Without Repeating Characters(最长不重复子串)题目戳这">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/随笔/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/17/leetcode-3/"/>
 
-  <title> 分类: 随笔 | leohujx </title>
+  <title> leetcode_3 | leohujx </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -234,47 +235,150 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        随笔
-        <small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                leetcode_3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-17T00:52:17+08:00" content="2016-10-16">
+              2016-10-16
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h1 id="Longest-Substring-Without-Repeating-Characters-最长不重复子串"><a href="#Longest-Substring-Without-Repeating-Characters-最长不重复子串" class="headerlink" title="Longest Substring Without Repeating Characters(最长不重复子串)"></a>Longest Substring Without Repeating Characters(最长不重复子串)</h1><p><a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" rel="external">题目戳这</a></p>
+<a id="more"></a>
+<p>题意:</p>
+<blockquote>
+<p>求字符串中的最长不重复子串</p>
+</blockquote>
+<p>解法:</p>
+<p>如果用暴力的方法就是O(n^2)的复杂度，会超时。这我们用一个比较巧妙的方法，就是用一个数组来记录某个字符最近出现的位置，比如字符出现在位置i，结果在位置j又出现了，那么这个子串的长度就是 j-i。</p>
+<p>代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLongestSubstring</span><span class="params">(self, s)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type s: str</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        slen = len(s)</div><div class="line">        mp = &#123;&#125;</div><div class="line">        id = <span class="number">-1</span></div><div class="line">        max = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(slen):</div><div class="line">            <span class="keyword">if</span> s[i] <span class="keyword">in</span> mp <span class="keyword">and</span> mp[s[i]] &gt; id:</div><div class="line">                id = mp[s[i]]</div><div class="line">            <span class="keyword">if</span> i - id &gt; max:</div><div class="line">                max = i - id</div><div class="line">            </div><div class="line">            mp[s[i]] = i</div><div class="line">        </div><div class="line">        <span class="keyword">return</span> max</div></pre></td></tr></table></figure>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/09/06/Hexo主题Next的配置搭建/" itemprop="url">
-              
-                <span itemprop="name">Hexo主题Next的配置搭建</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-09-05T18:13:37Z"
-              content="2016-09-05" >
-          09-05
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/dp/" rel="tag">#dp</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/15/从sql注入到shell上传/" rel="next" title="从sql注入到shell上传">
+                <i class="fa fa-chevron-left"></i> 从sql注入到shell上传
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </section>
 
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -282,6 +386,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -301,8 +409,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/cmxx.png"
@@ -352,6 +469,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Longest-Substring-Without-Repeating-Characters-最长不重复子串"><span class="nav-number">1.</span> <span class="nav-text">Longest Substring Without Repeating Characters(最长不重复子串)</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -455,6 +583,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
