@@ -258,6 +258,128 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/19/leetcode-11/" itemprop="url">
+                  leetcode_11
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-18T21:53:25Z" content="2016-10-18">
+              2016-10-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Container-With-Most-Water"><a href="#Container-With-Most-Water" class="headerlink" title="Container With Most Water"></a>Container With Most Water</h1><p><a href="https://leetcode.com/problems/container-with-most-water/" target="_blank" rel="external">题目戳这</a></p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给一系列的点<code>a1,a2,a3....an</code>，作它们的关于x轴的垂直线，这样就形成了n条线段，问任选两条线段，求它们与x轴三条线段形成的”容器”最多能容纳多少体积的水。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>我们很容易想到，这个就是求最大的体积，而在不“封顶”的情况下，这个容器的长度是由较短的竖直边长度决定的。我们首先看比较容易解决的宽度。因为宽度是分布在x轴上的一系列的点之间的距离，那么我们发现，假设首先取头和尾的两条，长度为a1和an，那么</p>
+<ul>
+<li>当a1&lt;an时，长度由a1决定，此时a1能形成的最大容器就是与an进行搭配，体积为(an-a2)*a1</li>
+<li>当a1&gt;an是，长度由an决定，此时an能形成的最大容器就是与a1进行搭配，体积为(an-a1)*an</li>
+</ul>
+<p>从上面的分析我们可以看出，当某个是短板的时候，那么它肯定与当前高的那个搭配是最好的，所以这时候我们就可以跳过短板，让高的那个与它的下一个进行搭配。</p>
+<p>所以总的来说，算法就是这样的，我们首先取a1和an，然后用两个指针i=1,j=n,则比较a1和an的大小，如果a1小，那么此时它与an搭配肯定是最大的了，无需再与其他的高度计算，所以直接跳过a1,即<code>i+=1</code>，反之则<code>j+=1</code>，一直移动到i,j相等为止。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxArea</span><span class="params">(self, height)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type height: List[int]</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        i = <span class="number">0</span></div><div class="line">        j = len(height)<span class="number">-1</span></div><div class="line">        mmax = <span class="number">-1</span></div><div class="line">        <span class="keyword">while</span> i&lt;=j:</div><div class="line">            w = j - i</div><div class="line">            h = height[i] <span class="keyword">if</span> height[i]&lt;height[j] <span class="keyword">else</span> height[j]</div><div class="line">            mmax = mmax <span class="keyword">if</span> mmax &gt; w*h <span class="keyword">else</span> w*h</div><div class="line">            <span class="keyword">if</span> height[i] &gt; height[j]:</div><div class="line">                j -= <span class="number">1</span></div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                i += <span class="number">1</span></div><div class="line">            </div><div class="line">        <span class="keyword">return</span> mmax</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/17/leetcode-5/" itemprop="url">
                   leetcode_5
                 </a>
@@ -1072,7 +1194,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1089,7 +1211,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
