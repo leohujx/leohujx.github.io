@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="test," />
+  <meta name="keywords" content="array sort," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="测试下tags和categories的功能">
+<meta name="description" content="3Sum Closest题目戳这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/2016/09/05/test/index.html">
+<meta property="og:title" content="leetcode_16">
+<meta property="og:url" content="http://yoursite.com/2016/10/21/leetcode-16/index.html">
 <meta property="og:site_name" content="leohujx">
-<meta property="og:description" content="测试下tags和categories的功能">
-<meta property="og:updated_time" content="2016-09-05T08:08:18.000Z">
+<meta property="og:description" content="3Sum Closest题目戳这">
+<meta property="og:updated_time" content="2016-10-20T14:55:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="测试下tags和categories的功能">
+<meta name="twitter:title" content="leetcode_16">
+<meta name="twitter:description" content="3Sum Closest题目戳这">
 
 
 
@@ -114,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/05/test/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/21/leetcode-16/"/>
 
-  <title> test | leohujx </title>
+  <title> leetcode_16 | leohujx </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -245,7 +245,7 @@
   
   
 
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -256,7 +256,7 @@
             
             
               
-                test
+                leetcode_16
               
             
           </h1>
@@ -268,8 +268,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T05:57:15+08:00" content="2016-09-04">
-              2016-09-04
+            <time itemprop="dateCreated" datetime="2016-10-21T06:46:37+08:00" content="2016-10-20">
+              2016-10-20
             </time>
           </span>
 
@@ -282,8 +282,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
+                  <a href="/categories/leetcode/" itemprop="url" rel="index">
+                    <span itemprop="name">leetcode</span>
                   </a>
                 </span>
 
@@ -315,7 +315,11 @@
       
 
       
-        <p>测试下tags和categories的功能<br><a id="more"></a><br>test</p>
+        <h1 id="3Sum-Closest"><a href="#3Sum-Closest" class="headerlink" title="3Sum Closest"></a>3Sum Closest</h1><p><a href="https://leetcode.com/problems/3sum-closest/" target="_blank" rel="external">题目戳这</a></p>
+<a id="more"></a>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给一个数组，然后零给一个目标数字target,求三个数字组合a,b,c，使得它们的和最接近target。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>这个跟前面的题目类似，我们先把它进行排序，然后枚举a,将另外两个指针i,j指向a后面数字序列的一头一尾，然后比较array[i]+array[j]的结果，如果比target小，说明array[i]过小，此时将i的指针往后移动，并且更新结果。反之亦然。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums, target)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type nums: List[int]</div><div class="line">        :type target: int</div><div class="line">        :rtype: int</div><div class="line">        """</div><div class="line">        nlen = len(nums)</div><div class="line">        nums.sort()</div><div class="line">        mmax = <span class="number">0x7fffffff</span></div><div class="line">        result = <span class="number">0</span></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(nlen<span class="number">-2</span>):</div><div class="line">            <span class="keyword">if</span> i <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]: <span class="comment"># 重复的无需计算</span></div><div class="line">                <span class="keyword">continue</span></div><div class="line">            l = i + <span class="number">1</span></div><div class="line">            r = nlen<span class="number">-1</span></div><div class="line">            <span class="keyword">while</span> l &lt; r:</div><div class="line">                sm = nums[i] + nums[l] + nums[r]</div><div class="line">                <span class="keyword">if</span> sm &lt; target:</div><div class="line">                    <span class="keyword">if</span> target - sm &lt; mmax:</div><div class="line">                        mmax = target-sm</div><div class="line">                        result = sm</div><div class="line">                    l += <span class="number">1</span></div><div class="line">                <span class="keyword">elif</span> sm &gt; target:</div><div class="line">                    <span class="keyword">if</span> sm - target &lt; mmax:</div><div class="line">                        mmax = sm - target</div><div class="line">                        result = sm</div><div class="line">                    r -= <span class="number">1</span></div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    <span class="keyword">return</span> sm</div><div class="line">            </div><div class="line">        <span class="keyword">return</span> result</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -338,7 +342,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/test/" rel="tag">#test</a>
+            <a href="/tags/array-sort/" rel="tag">#array sort</a>
           
         </div>
       
@@ -347,17 +351,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/01/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/10/21/leetcode-15/" rel="next" title="leetcode_15">
+                <i class="fa fa-chevron-left"></i> leetcode_15
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/06/Hexo主题Next的配置搭建/" rel="prev" title="Hexo主题Next的配置搭建">
-                Hexo主题Next的配置搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -471,7 +471,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#3Sum-Closest"><span class="nav-number">1.</span> <span class="nav-text">3Sum Closest</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">1.2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
