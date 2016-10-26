@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="test," />
+  <meta name="keywords" content="bit manipulation," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="测试下tags和categories的功能">
+<meta name="description" content="Convert a Number to Hexadecimal题目戳这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/2016/09/05/test/index.html">
+<meta property="og:title" content="leetcode_405">
+<meta property="og:url" content="http://yoursite.com/2016/10/26/leetcode-405/index.html">
 <meta property="og:site_name" content="leohujx">
-<meta property="og:description" content="测试下tags和categories的功能">
-<meta property="og:updated_time" content="2016-09-05T08:08:18.000Z">
+<meta property="og:description" content="Convert a Number to Hexadecimal题目戳这">
+<meta property="og:updated_time" content="2016-10-26T06:48:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="测试下tags和categories的功能">
+<meta name="twitter:title" content="leetcode_405">
+<meta name="twitter:description" content="Convert a Number to Hexadecimal题目戳这">
 
 
 
@@ -114,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/05/test/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/10/26/leetcode-405/"/>
 
-  <title> test | leohujx </title>
+  <title> leetcode_405 | leohujx </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -245,7 +245,7 @@
   
   
 
-  <article class="post post-type-categories " itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
       <header class="post-header">
@@ -256,7 +256,7 @@
             
             
               
-                test
+                leetcode_405
               
             
           </h1>
@@ -268,8 +268,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-05T05:57:15+08:00" content="2016-09-04">
-              2016-09-04
+            <time itemprop="dateCreated" datetime="2016-10-26T14:38:08Z" content="2016-10-26">
+              2016-10-26
             </time>
           </span>
 
@@ -282,8 +282,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/测试/" itemprop="url" rel="index">
-                    <span itemprop="name">测试</span>
+                  <a href="/categories/leetocde/" itemprop="url" rel="index">
+                    <span itemprop="name">leetocde</span>
                   </a>
                 </span>
 
@@ -315,7 +315,11 @@
       
 
       
-        <p>测试下tags和categories的功能<br><a id="more"></a><br>test</p>
+        <h1 id="Convert-a-Number-to-Hexadecimal"><a href="#Convert-a-Number-to-Hexadecimal" class="headerlink" title="Convert a Number to Hexadecimal"></a>Convert a Number to Hexadecimal</h1><p><a href="https://leetcode.com/problems/convert-a-number-to-hexadecimal/" target="_blank" rel="external">题目戳这</a></p>
+<a id="more"></a>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给一个十进制的数，输出它的十六进制的表示方法，负数的话则输出它的补码形式。</p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>主要是关注下负数的表示形式，这里有篇很好的<a href="http://blog.csdn.net/lmjq/article/details/5450292" target="_blank" rel="external">文章</a>解释了为什么负数的补码就是正数补码的取反加一，总的来说，减去一个数a，就等于加上<code>2^n-a</code>，其中n为a二进制的位数，所以这道题目当输入x小于0的时候，取它的2^n-x即可。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></div><div class="line">    str1 = <span class="string">""</span></div><div class="line">    vc = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>]</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transForm</span><span class="params">(self, num)</span>:</span></div><div class="line">        <span class="keyword">if</span> num &lt;= <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> </div><div class="line">        self.transForm(num // <span class="number">16</span>)</div><div class="line">        self.str1 += str(num%<span class="number">16</span>) <span class="keyword">if</span> num%<span class="number">16</span> &lt; <span class="number">10</span> <span class="keyword">else</span> self.vc[num%<span class="number">16</span><span class="number">-10</span>]</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">toHex</span><span class="params">(self, num)</span>:</span></div><div class="line">        <span class="string">"""</span></div><div class="line">        :type num: int</div><div class="line">        :rtype: str</div><div class="line">        """</div><div class="line">        bitLen = <span class="number">32</span></div><div class="line">        <span class="keyword">if</span> num == <span class="number">0</span>:</div><div class="line">            <span class="keyword">return</span> <span class="string">'0'</span></div><div class="line">        <span class="keyword">if</span> num &lt; <span class="number">0</span>:</div><div class="line">            num = (<span class="number">1</span>&lt;&lt;bitLen) + num</div><div class="line">        </div><div class="line">        self.transForm(num)</div><div class="line">        <span class="keyword">return</span> self.str1</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -338,7 +342,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/test/" rel="tag">#test</a>
+            <a href="/tags/bit-manipulation/" rel="tag">#bit manipulation</a>
           
         </div>
       
@@ -347,17 +351,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/01/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/10/24/leetcode-371/" rel="next" title="leetcode_371">
+                <i class="fa fa-chevron-left"></i> leetcode_371
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/06/Hexo主题Next的配置搭建/" rel="prev" title="Hexo主题Next的配置搭建">
-                Hexo主题Next的配置搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -471,7 +471,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Convert-a-Number-to-Hexadecimal"><span class="nav-number">1.</span> <span class="nav-text">Convert a Number to Hexadecimal</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">1.2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
