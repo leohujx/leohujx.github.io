@@ -1,0 +1,637 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="codeviz," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="CodeViz在Ubuntu12.04下安装部署总结CodeViz是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。
+今天折腾了下CodeViz在Ubuntu12.04下的安装部署，还是遇到了很多的问题，不过幸好最后还是解决了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="codeviz工具在Ubuntu12.04下的部署和问题总结">
+<meta property="og:url" content="http://yoursite.com/2018/07/07/codeviz工具在Ubuntu12-04下的部署和问题总结/index.html">
+<meta property="og:site_name" content="leohujx">
+<meta property="og:description" content="CodeViz在Ubuntu12.04下安装部署总结CodeViz是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。
+今天折腾了下CodeViz在Ubuntu12.04下的安装部署，还是遇到了很多的问题，不过幸好最后还是解决了。">
+<meta property="og:updated_time" content="2018-07-06T09:23:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="codeviz工具在Ubuntu12.04下的部署和问题总结">
+<meta name="twitter:description" content="CodeViz在Ubuntu12.04下安装部署总结CodeViz是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。
+今天折腾了下CodeViz在Ubuntu12.04下的安装部署，还是遇到了很多的问题，不过幸好最后还是解决了。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/07/codeviz工具在Ubuntu12-04下的部署和问题总结/"/>
+
+  <title> codeviz工具在Ubuntu12.04下的部署和问题总结 | leohujx </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">leohujx</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Nothing is too difficult, if you put your heart into it.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                codeviz工具在Ubuntu12.04下的部署和问题总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-07-06T16:34:41Z" content="2018-07-06">
+              2018-07-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/codeviz/" itemprop="url" rel="index">
+                    <span itemprop="name">codeviz</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="CodeViz在Ubuntu12-04下安装部署总结"><a href="#CodeViz在Ubuntu12-04下安装部署总结" class="headerlink" title="CodeViz在Ubuntu12.04下安装部署总结"></a>CodeViz在Ubuntu12.04下安装部署总结</h1><p><a href="https://github.com/petersenna/codeviz" target="_blank" rel="external">CodeViz</a>是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。</p>
+<p>今天折腾了下CodeViz在Ubuntu12.04下的安装部署，还是遇到了很多的问题，不过幸好最后还是解决了。</p>
+<a id="more"></a>
+<p>CodeViz版本：1.0.12<br>该版本只支持GCC 4.6.2</p>
+<ol>
+<li><p>首先安装graphviz<br>在ubuntu下安装graphviz只需要使用apt-get命令即可<br><code>sudo apt-get install graphviz</code></p>
+</li>
+<li><p>然后安装Codeviz，这个从<a href="https://github.com/petersenna/codeviz" target="_blank" rel="external">github</a>上能够下下来，原网址已经失效.</p>
+</li>
+<li><p>将其放在某个目录下，进行解压。这个1.0.12版本的graphviz只支持GCC 4.6.2，那么从gnu的官网上可以下到<a href="http://ftp.gnu.org/pub/gnu/gcc/gcc-4.6.2/gcc-4.6.2.tar.gz" target="_blank" rel="external">GCC 4.6.2</a></p>
+</li>
+<li><p>GCC 4.6.2下下来以后，将其放在<code>codeviz/compilers</code>的目录下，然后运行install_gcc-4.6.2.sh,这步会将初始的gcc 4.6.2打上patch，并将其安装到某个目录，从sh脚本来看，安装的目录为 <code>$HOME/gcc-graph</code>，所以我们 <code>echo $HOME</code>就能知道最后整个patch过的gcc安装在了哪个目录下。</p>
+</li>
+</ol>
+<p>这一步的问题是最多最复杂的，我碰到了以下的几个问题</p>
+<p>(1) 首先是出现 <code>gcc configure: error: Building GCC requires GMP 4.2+, MPFR 2.3.1+ and MPC 0.8.0+</code><br>GCC的编译需要GMP, MPFR以及MPC三个库的支持，我们不需要自己去寻找这些库下载，在目录 <code>codeviz/compilers/gcc-graph/gcc-4.6.2/contrib</code>里面有一个<code>download_prerequisites</code> 的脚本，这几个脚本的作用就是将GMP,MPC以及MPFR下载下来解压，并创建软链接，默认的这些文件都会在contrib目录中，而在<code>codeviz/compilers</code>目录中再次运行install_gcc-4.6.2.sh还是出现同样的错误，说明它并没找到这些依赖库，网上有看到可以解决的一些办法，最简单的就是在 <code>covdeviz/compilers/gcc-graph/gcc-4.6.2</code> 目录下建立对GMP,MPFR以及MPC的软链接，具体的命令为(默认在codeviz/compilers/gcc-graph/gcc-4.6.2的目录下)<br><code>ln -s ./contrib/gmp-4.3.2 ./gmp</code> <br><br><code>ln -s ./contrib/mpfr-2.4.2 ./mpfr</code><br><br><code>ln -s ./contrib/mpc-0.8.1 ./mpc</code></p>
+<p>(2) 第二个问题是 <code>fatal error: bits/predefs.h: No such file or directory</code>,从<a href="https://stackoverflow.com/questions/12591629/gcc-cannot-find-bits-predefs-h-on-i686" target="_blank" rel="external">stackoverflow</a>上找到了解决方法，安装gcc-multilib即可。</p>
+<p>(3) 第三个问题出现的是 <code>cannot find crt1.o</code>，这也是在<a href="https://stackoverflow.com/questions/6329887/compiling-problems-cannot-find-crt1-o" target="_blank" rel="external">stackoverflow</a>上找到了解决方案，我们用locate crti.o进行定位，发现它在/usr/lib/x86_64-linux-gnu中，方法就是将其软链接到/usr/lib64中，done.</p>
+<p>(4) 第四个问题出现的是 <code>.libs/alloc.o：could not read symbols：Bad value</code>，解决方法在<a href="https://www.jianshu.com/p/dca9eec2aea0" target="_blank" rel="external">这里</a>找到了，即对install_gcc-4.6.2.sh进行修改，将</p>
+<p><code>../gcc-4.6.2/configure --prefix=$INSTALL_PATH --enable-shared --enable-languages=c,c++ || exit</code><br><code>make bootstrap</code></p>
+<p>修改为<br><code>CFLAGS=&quot;-O2 -fPIC&quot; ../gcc-4.6.2/configure --prefix=$INSTALL_PATH --disable-bootstrap --enable-shared --enable-languages=c,c++ || exit</code><br><code>make -j 4</code></p>
+<p>解决上述问题后，再次运行 install_gcc-4.6.2.sh即可</p>
+<p>5.接下去的步骤基本就比较简单了，这里略去。</p>
+<p>参考文献：</p>
+<blockquote>
+<p><a href="https://www.jianshu.com/p/dca9eec2aea0" target="_blank" rel="external">https://www.jianshu.com/p/dca9eec2aea0</a> <br><br><a href="http://www.cnblogs.com/lanxuezaipiao/p/3450201.html" target="_blank" rel="external">http://www.cnblogs.com/lanxuezaipiao/p/3450201.html</a><br><a href="https://blog.csdn.net/u010295496/article/details/72862690" target="_blank" rel="external">https://blog.csdn.net/u010295496/article/details/72862690</a></p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/codeviz/" rel="tag">#codeviz</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/21/leetcode-395/" rel="next" title="leetcode_395">
+                <i class="fa fa-chevron-left"></i> leetcode_395
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/cmxx.png"
+               alt="leohujx" />
+          <p class="site-author-name" itemprop="name">leohujx</p>
+          <p class="site-description motion-element" itemprop="description">leohujx’s blog</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">52</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">23</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CodeViz在Ubuntu12-04下安装部署总结"><span class="nav-number">1.</span> <span class="nav-text">CodeViz在Ubuntu12.04下安装部署总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">leohujx</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
