@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="CodeViz在Ubuntu12.04下安装部署总结CodeViz是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。
+<meta name="description" content="CodeViz是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。
 今天折腾了下CodeViz在Ubuntu12.04下的安装部署，还是遇到了很多的问题，不过幸好最后还是解决了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="codeviz工具在Ubuntu12.04下的部署和问题总结">
 <meta property="og:url" content="http://yoursite.com/2018/07/07/codeviz工具在Ubuntu12-04下的部署和问题总结/index.html">
 <meta property="og:site_name" content="leohujx">
-<meta property="og:description" content="CodeViz在Ubuntu12.04下安装部署总结CodeViz是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。
+<meta property="og:description" content="CodeViz是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。
 今天折腾了下CodeViz在Ubuntu12.04下的安装部署，还是遇到了很多的问题，不过幸好最后还是解决了。">
-<meta property="og:updated_time" content="2018-07-15T08:56:17.000Z">
+<meta property="og:updated_time" content="2018-07-15T09:10:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="codeviz工具在Ubuntu12.04下的部署和问题总结">
-<meta name="twitter:description" content="CodeViz在Ubuntu12.04下安装部署总结CodeViz是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。
+<meta name="twitter:description" content="CodeViz是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。
 今天折腾了下CodeViz在Ubuntu12.04下的安装部署，还是遇到了很多的问题，不过幸好最后还是解决了。">
 
 
@@ -318,14 +318,14 @@
       
 
       
-        <h1 id="CodeViz在Ubuntu12-04下安装部署总结"><a href="#CodeViz在Ubuntu12-04下安装部署总结" class="headerlink" title="CodeViz在Ubuntu12.04下安装部署总结"></a>CodeViz在Ubuntu12.04下安装部署总结</h1><p><a href="https://github.com/petersenna/codeviz" target="_blank" rel="external">CodeViz</a>是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。</p>
+        <p><a href="https://github.com/petersenna/codeviz" target="_blank" rel="external">CodeViz</a>是一款在C/C++源代码中分析函数之间调用关系的开源工具。原理是给GCC打个patch，让它在编译C/C++文件时导出一个函数流图，最后用graphviz来进行图形的绘制。</p>
 <p>今天折腾了下CodeViz在Ubuntu12.04下的安装部署，还是遇到了很多的问题，不过幸好最后还是解决了。</p>
 <a id="more"></a>
 <p>CodeViz版本：1.0.12<br>该版本只支持GCC 4.6.2</p>
-<h2 id="1-安装graphviz"><a href="#1-安装graphviz" class="headerlink" title="1. 安装graphviz"></a>1. 安装graphviz</h2><p>在ubuntu下安装graphviz只需要使用apt-get命令即可<br><code>sudo apt-get install graphviz</code></p>
-<h2 id="2-安装codeViz"><a href="#2-安装codeViz" class="headerlink" title="2. 安装codeViz"></a>2. 安装codeViz</h2><p>codeViz从<a href="https://github.com/petersenna/codeviz" target="_blank" rel="external">github</a>上能够下下来，原先的下载<a href="http://www.csn.ul.ie/~mel/projects/codeviz/codeviz-1.0.12.tar.gz" target="_blank" rel="external">网址</a>已经失效.</p>
+<h1 id="1-安装graphviz"><a href="#1-安装graphviz" class="headerlink" title="1. 安装graphviz"></a>1. 安装graphviz</h1><p>在ubuntu下安装graphviz只需要使用apt-get命令即可<br><code>sudo apt-get install graphviz</code></p>
+<h1 id="2-安装codeViz"><a href="#2-安装codeViz" class="headerlink" title="2. 安装codeViz"></a>2. 安装codeViz</h1><p>codeViz从<a href="https://github.com/petersenna/codeviz" target="_blank" rel="external">github</a>上能够下下来，原先的下载<a href="http://www.csn.ul.ie/~mel/projects/codeviz/codeviz-1.0.12.tar.gz" target="_blank" rel="external">网址</a>已经失效.</p>
 <p>将codeViz放在<code>codeviz</code>的目录下，进行解压。</p>
-<h2 id="3-安装-amp-编译Patched-GCC"><a href="#3-安装-amp-编译Patched-GCC" class="headerlink" title="3.安装&amp;编译Patched-GCC"></a>3.安装&amp;编译Patched-GCC</h2><p>1.0.12版本的Codeviz只支持GCC 4.6.2版本，我们可以从GNU上可以下到原始版本的<a href="http://ftp.gnu.org/pub/gnu/gcc/gcc-4.6.2/gcc-4.6.2.tar.gz" target="_blank" rel="external">GCC 4.6.2</a></p>
+<h1 id="3-安装-amp-编译Patched-GCC"><a href="#3-安装-amp-编译Patched-GCC" class="headerlink" title="3.安装&amp;编译Patched-GCC"></a>3.安装&amp;编译Patched-GCC</h1><p>1.0.12版本的Codeviz只支持GCC 4.6.2版本，我们可以从GNU上可以下到原始版本的<a href="http://ftp.gnu.org/pub/gnu/gcc/gcc-4.6.2/gcc-4.6.2.tar.gz" target="_blank" rel="external">GCC 4.6.2</a></p>
 <p>GCC 4.6.2下载完成之后，将其放在<code>codeviz/compilers</code>的目录下，然后运行install_gcc-4.6.2.sh,这步会将初始的gcc 4.6.2打上patch，并将其安装到某个目录，从sh脚本来看，安装的目录为 <code>$HOME/gcc-graph</code>，所以我们 <code>echo $HOME</code>就能知道最后这个patch过的gcc安装在了哪个目录下。</p>
 <p>这一步的问题是最多最复杂的，我碰到了以下的几个问题</p>
 <p>(1) 首先是出现 <code>gcc configure: error: Building GCC requires GMP 4.2+, MPFR 2.3.1+ and MPC 0.8.0+</code><br>GCC的编译需要GMP, MPFR以及MPC三个库的支持，其实我们不需要自己去寻找这些库哪里下载，在目录 <code>codeviz/compilers/gcc-graph/gcc-4.6.2/contrib</code>里面有一个<code>download_prerequisites</code> 的脚本，这几个脚本的作用就是将GMP,MPC以及MPFR下载下来解压，并创建软链接，默认的这些文件都会在contrib目录中，而在<code>codeviz/compilers</code>目录中再次运行install_gcc-4.6.2.sh还是出现同样的错误，说明它并没找到这些依赖库，网上有看到可以解决的一些办法，最简单的就是在 <code>covdeviz/compilers/gcc-graph/gcc-4.6.2</code> 目录下建立对GMP,MPFR以及MPC的软链接，具体的命令为(默认在codeviz/compilers/gcc-graph/gcc-4.6.2的目录下)<br><code>ln -s ./contrib/gmp-4.3.2 ./gmp</code><br><code>ln -s ./contrib/mpfr-2.4.2 ./mpfr</code><br><code>ln -s ./contrib/mpc-0.8.1 ./mpc</code></p>
@@ -333,7 +333,7 @@
 <p>(3) 第三个问题是 <code>cannot find crt1.o</code>，这也是在<a href="https://stackoverflow.com/questions/6329887/compiling-problems-cannot-find-crt1-o" target="_blank" rel="external">stackoverflow</a>上找到了解决方案，我们用locate crti.o进行定位，发现它在/usr/lib/x86_64-linux-gnu中，方法就是将其软链接到/usr/lib64中.<br><code>ln -s /usr/lib/x86_64_linux/gnu/crti.o /usr/lib64/crti.o</code></p>
 <p>(4) 第四个问题出现的是 <code>.libs/alloc.o：could not read symbols：Bad value</code>，解决方法在<a href="https://www.jianshu.com/p/dca9eec2aea0" target="_blank" rel="external">这里</a>找到了，即对install_gcc-4.6.2.sh中的脚本内容进行修改，<br>将<code>../gcc-4.6.2/configure --prefix=$INSTALL_PATH --enable-shared --enable-languages=c,c++ || exit</code><br><code>make bootstrap</code>这一行<br>修改为<br><code>CFLAGS=&quot;-O2 -fPIC&quot; ../gcc-4.6.2/configure --prefix=$INSTALL_PATH --disable-bootstrap --enable-shared --enable-languages=c,c++ || exit</code><br><code>make -j 4</code></p>
 <p>解决上述问题后，再次运行 install_gcc-4.6.2.sh即可</p>
-<h2 id="4-编译codeViz"><a href="#4-编译codeViz" class="headerlink" title="4.编译codeViz"></a>4.编译codeViz</h2><p>注意在这一步，我们得用patch过的GCC来进行编译，所以首先先设置下临时的环境变量<br><code>export LD_LIBRARY_PATH=/usr/local/gcc-graph/lib:$LD_LIBRARY_PATH</code><br><code>export PATH=/usr/local/gcc-graph/bin:$PATH</code></p>
+<h1 id="4-编译codeViz"><a href="#4-编译codeViz" class="headerlink" title="4.编译codeViz"></a>4.编译codeViz</h1><p>注意在这一步，我们得用patch过的GCC来进行编译，所以首先先设置下临时的环境变量<br><code>export LD_LIBRARY_PATH=/usr/local/gcc-graph/lib:$LD_LIBRARY_PATH</code><br><code>export PATH=/usr/local/gcc-graph/bin:$PATH</code></p>
 <p>再用<code>gcc -v</code>来查看下gcc的版本是否为上述的4.6.2。<br>如果对了的话，就可以进行编译了。<br><code>./configure &amp;&amp; make install-codeviz</code></p>
 <p>到这里codeViz就基本已经安装并可以使用了。</p>
 <p>参考文献：</p>
@@ -491,7 +491,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CodeViz在Ubuntu12-04下安装部署总结"><span class="nav-number">1.</span> <span class="nav-text">CodeViz在Ubuntu12.04下安装部署总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-安装graphviz"><span class="nav-number">1.1.</span> <span class="nav-text">1. 安装graphviz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-安装codeViz"><span class="nav-number">1.2.</span> <span class="nav-text">2. 安装codeViz</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-安装-amp-编译Patched-GCC"><span class="nav-number">1.3.</span> <span class="nav-text">3.安装&编译Patched-GCC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-编译codeViz"><span class="nav-number">1.4.</span> <span class="nav-text">4.编译codeViz</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装graphviz"><span class="nav-number">1.</span> <span class="nav-text">1. 安装graphviz</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装codeViz"><span class="nav-number">2.</span> <span class="nav-text">2. 安装codeViz</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-安装-amp-编译Patched-GCC"><span class="nav-number">3.</span> <span class="nav-text">3.安装&编译Patched-GCC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-编译codeViz"><span class="nav-number">4.</span> <span class="nav-text">4.编译codeViz</span></a></li></ol></div>
             
           </div>
         </section>
